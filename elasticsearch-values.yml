@@ -1,16 +1,10 @@
+clusterName: "elasticsearch"
+
 replicas: 1
 
 minimumMasterNodes: 1
 
 protocol: http
-
-createCert: false
-
-esConfig:
-  elasticsearch.yml: |
-    xpack.security.enabled: false
-    xpack.security.transport.ssl.enabled: false
-    xpack.security.http.ssl.enabled: false
 
 resources:
   requests:
@@ -19,3 +13,9 @@ resources:
   limits:
     cpu: 1
     memory: 2Gi
+
+volumeClaimTemplate:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 10Gi
